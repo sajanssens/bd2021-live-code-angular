@@ -21,6 +21,29 @@
     <!--
       <tag [dataattribute]="waarde" (event)="waarde2"> {{content...}} </tag>
     -->
+  </form>
+
+  <form (ngSubmit)="save()" [formGroup]="contactForm">
+    <div>
+      <label for="inputFirstName">First name:</label>
+      <input type="text" formControlName="firstName" name="firstName" id="inputFirstNameR" class="form-control">
+    </div>
+
+    <div>
+      <label for="inputSurname">Surname:</label>
+      <input type="text" formControlName="surname" name="surname" id="inputSurnameR" class="form-control">
+    </div>
+
+    <div>
+      <label for="inputEmail">E-mail address:</label>
+      <input type="text" formControlName="email" name="email" id="inputEmailR" class="form-control" required>
+    </div>
+
+    <button class="btn btn-primary">Add</button>
+
+    <!--
+      <tag [dataattribute]="waarde" (event)="waarde2"> {{content...}} </tag>
+    -->
 
   </form>
 </div>
@@ -41,4 +64,6 @@
   </tr>
 </table>
 
-<pre>{{newContact |json}}</pre>
+<!--<pre>{{newContact | json}}</pre>
+<pre>{{contactForm.value | json}}</pre>-->
+

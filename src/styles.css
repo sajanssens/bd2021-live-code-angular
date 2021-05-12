@@ -44,6 +44,7 @@ td button { /* edit, delete and save buttons in contacts table*/
 .flex {
   display: flex;
 }
+
 .flex form {
   margin-right: 50px;
 }

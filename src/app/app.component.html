@@ -1,1 +1,4 @@
 <app-contact-form></app-contact-form>
+<app-loading [message]="loadingMessage"
+             (iAmClicked)="handleLoadingIsClicked($event)">
+</app-loading>
