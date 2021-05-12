@@ -1,1 +1,79 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+  font-family: sans-serif;
+}
+
+form div {
+  display: flex;
+  margin: 5px;
+}
+form label {
+  min-width: 120px;
+  padding: 7px 0;
+}
+form span {
+  padding: 7px;
+  color: red;
+}
+input {
+  padding: 7px;
+}
+th, td {
+  padding: 7px;
+}
+th {
+  border-bottom: 2px solid gray;
+  text-align: left;
+  margin: 0;
+}
+td {
+  border-bottom: 1px solid lightgray;
+}
+td button { /* edit, delete and save buttons in contacts table*/
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  background: none;
+  font-family: sans-serif;
+  color: blue;
+  text-decoration: underline;
+  font-size: 1em;
+}
+
+.flex {
+  display: flex;
+}
+.flex form {
+  margin-right: 50px;
+}
+
+input {
+  border: 1px solid gray;
+  border-radius: 5px;
+  transition: 0.2s ease all;
+  outline: none;
+}
+input.ng-touched.ng-valid {
+  border-left: 5px solid green;
+}
+input.ng-touched.ng-invalid {
+  border-left: 5px solid red;
+
+}
+td a:first-child {
+  margin-right: 10px;
+}
+
+/* copy column directive styling */
+.in-selection {
+  background: lightgoldenrodyellow;
+}
+.copied {
+  background: lightpink;
+}
+
+table[copyColumn] {
+  border-collapse: collapse;
+  user-select: none;
+}

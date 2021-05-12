@@ -1,0 +1,38 @@
+<div class="myform">
+  <form (ngSubmit)="addContact()" #myForm="ngForm">
+    <label for="inputFirstName">First name:</label>
+    <input type="text" [(ngModel)]="newContact.firstName" name="firstName" id="inputFirstName" class="form-control">
+
+    <label for="inputSurname">Surname:</label>
+    <input type="text" [(ngModel)]="newContact.surname" name="surname" id="inputSurname" class="form-control">
+
+    <label for="inputEmail">E-mail address:</label>
+    <input type="text" [(ngModel)]="newContact.email" name="email" id="inputEmail" class="form-control" required
+           #myemail="ngModel"><span *ngIf="myemail.invalid">Vul in...</span>
+
+    <button [disabled]="myForm.invalid" class="btn btn-primary">Add</button>
+
+    <!--
+      <tag [dataattribute]="waarde" (event)="waarde2"> {{content...}} </tag>
+    -->
+
+  </form>
+</div>
+
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>E-mail address</th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let contact of contacts">
+    <td>{{contact.firstName}} {{contact.surname}}</td>
+    <td>{{contact.email}}</td>
+    <td>
+      <button class="btn">Edit</button>
+      <button class="btn btn-danger">Delete</button>
+    </td>
+  </tr>
+</table>
+
+<pre>{{newContact |json}}</pre>

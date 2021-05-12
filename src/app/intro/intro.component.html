@@ -1,0 +1,20 @@
+<h1>{{title}}</h1>
+<h2>{{toggle}}</h2>
+
+<button (click)="handleClick()">CLICK ME!</button>
+
+<p [hidden]="toggle==true">Hidden title</p>
+
+<ul>
+  <li *ngFor="let car of cars" [class.expensive]="car.price > 15000">{{car.make}} {{car.type}} </li>
+</ul>
+
+<div *ngIf="toggle">Hi there!</div>
+
+<input type="text" [(ngModel)]="input">
+
+<p> {{input}}</p>
+
+<app-hello-world></app-hello-world>
+
+<pre>{{cars | json}}</pre>
