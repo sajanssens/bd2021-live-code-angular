@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Contact} from './contact';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-contact-form',
@@ -14,6 +14,15 @@ export class ContactFormComponent implements OnInit {
   contactForm: FormGroup;
   bedrag = 45.99;
 
+  deleteForm: FormGroup;
+
+  loadingMessage = 'loading...';
+
+
+  constructor(private fb: FormBuilder) {
+
+  }
+
   ngOnInit(): void {
     this.contactForm = new FormGroup({
       firstName: new FormControl(''),
@@ -26,6 +35,22 @@ export class ContactFormComponent implements OnInit {
       {firstName: 'Frank', surname: 'Muscles', email: 'frank@muscles.com'},
       {firstName: 'Eddy', surname: 'Valentino', email: 'eddy@valfam.co.uk'}
     ];
+
+
+    const formContacts: FormGroup[] = [];
+
+    for (const c of this.contacts) {
+      formContacts.push(this.fb.group({del: false}));
+    }
+
+    this.deleteForm = this.fb.group({
+      contacts: this.fb.array(formContacts)
+    });
+  }
+
+  handleLoadingIsClicked(someOutput: string): void {
+    console.log(someOutput);
+    this.loadingMessage = someOutput;
   }
 
   addContact(): void {

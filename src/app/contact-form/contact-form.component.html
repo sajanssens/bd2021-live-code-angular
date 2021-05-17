@@ -16,7 +16,7 @@
              #myemail="ngModel"><span *ngIf="myemail.invalid">Vul in...</span>
     </div>
 
-    <button [disabled]="myForm.invalid" class="btn btn-primary">Add</button>
+    <button [disabled]="myForm.invalid" id="submitButton" class="btn btn-primary">Add</button>
 
     <!--
       <tag [dataattribute]="waarde" (event)="waarde2"> {{content...}} </tag>
@@ -48,23 +48,34 @@
   </form>
 </div>
 
-<table class="table">
-  <tr>
-    <th>Name</th>
-    <th>E-mail address</th>
-    <th></th>
-  </tr>
-  <tr *ngFor="let c of contacts" app-contact-row [contact]="c"></tr>
-  <!--<tr >
-    <td>{{contact.firstName}} {{contact.surname}}</td>
-    <td>{{contact.email}}</td>
-    <td>
-      <button class="btn">Edit</button>
-      <button class="btn btn-danger">Delete</button>
-    </td>
-  </tr>-->
-</table>
+<form [formGroup]="deleteForm" >
+  <table class="table" formArrayName="contacts">
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>E-mail address</th>
+      <th></th>
+    </tr>
 
-<!--<pre>{{newContact | json}}</pre>
-<pre>{{contactForm.value | json}}</pre>-->
+    <!--  <tr *ngFor="let c of contacts" app-contact-row [contact]="c"></tr>-->
+
+    <tr *ngFor="let c of contacts; let i = index" [formGroupName]="i">
+      <td><input type="checkbox" formControlName="del"></td>
+      <td>{{c.firstName}} {{c.surname}}</td>
+      <td>{{c.email}}</td>
+      <td>
+        <button class="btn">Edit</button>
+        <button class="btn btn-danger">Delete</button>
+      </td>
+    </tr>
+  </table>
+  <button>Delete selected</button>
+</form>
+
+<app-loading [message]="loadingMessage"
+             (iAmClicked)="handleLoadingIsClicked($event)">
+</app-loading>
+
+<!--<pre>{{newContact | json}}</pre>-->
+<pre>{{deleteForm.value | json}}</pre>
 
