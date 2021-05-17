@@ -54,14 +54,15 @@
     <th>E-mail address</th>
     <th></th>
   </tr>
-  <tr *ngFor="let contact of contacts">
+  <tr *ngFor="let c of contacts" app-contact-row [contact]="c"></tr>
+  <!--<tr >
     <td>{{contact.firstName}} {{contact.surname}}</td>
     <td>{{contact.email}}</td>
     <td>
       <button class="btn">Edit</button>
       <button class="btn btn-danger">Delete</button>
     </td>
-  </tr>
+  </tr>-->
 </table>
 
 <!--<pre>{{newContact | json}}</pre>
