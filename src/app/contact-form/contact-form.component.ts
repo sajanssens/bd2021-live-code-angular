@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Contact} from './contact';
-import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-contact-form',
@@ -12,12 +12,8 @@ export class ContactFormComponent implements OnInit {
   contacts: Contact[];
   newContact = {} as Contact;
   contactForm: FormGroup;
-  bedrag = 45.99;
-
-  deleteForm: FormGroup;
-
+  checkBoxForm: FormGroup;
   loadingMessage = 'loading...';
-
 
   constructor(private fb: FormBuilder) {
 
@@ -36,15 +32,18 @@ export class ContactFormComponent implements OnInit {
       {firstName: 'Eddy', surname: 'Valentino', email: 'eddy@valfam.co.uk'}
     ];
 
+    this.initCheckBoxForm();
+  }
 
+  private initCheckBoxForm(): void {
     const formContacts: FormGroup[] = [];
 
     for (const c of this.contacts) {
       formContacts.push(this.fb.group({del: false}));
     }
 
-    this.deleteForm = this.fb.group({
-      contacts: this.fb.array(formContacts)
+    this.checkBoxForm = this.fb.group({
+      contactsFormArray: this.fb.array(formContacts)
     });
   }
 
@@ -53,13 +52,16 @@ export class ContactFormComponent implements OnInit {
     this.loadingMessage = someOutput;
   }
 
-  addContact(): void {
+  addContactTemplateDriven(myForm: NgForm): void {
     this.contacts.push(this.newContact);
     this.newContact = {} as Contact; // i.e.: (Contact) new Object()
+    myForm.reset();
+    this.initCheckBoxForm();
   }
 
-  save(): void {
+  addContactModelDriven(): void {
     this.contacts.push(this.contactForm.value);
     this.contactForm.reset();
+    this.initCheckBoxForm();
   }
 }

@@ -6,11 +6,24 @@ describe('workspace-project App', () => {
 
   beforeEach(() => {
     page = new AppPage();
+    page.navigateTo();
   });
 
   it('should have input for first name', () => {
-    page.navigateTo();
-    expect(page.hasInputFirstName()).toBe(false);
+    expect(page.hasInputFirstName()).toBe(true);
+  });
+
+  it('should submit valid contact', () => {
+    page.getNrOfContacts().then(countBefore => {
+      page.enterFirstName('Hank');
+      page.enterSurname('Knot');
+      page.enterEmail('h@nk.com');
+      page.submitForm();
+
+      expect(page.getNrOfContacts()).toBe(countBefore + 1);
+    });
+
+    browser.sleep(2000);
   });
 
   afterEach(async () => {

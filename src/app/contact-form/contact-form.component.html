@@ -1,5 +1,5 @@
 <div class="flex">
-  <form (ngSubmit)="addContact()" #myForm="ngForm">
+  <form (ngSubmit)="addContactTemplateDriven(myForm)" #myForm="ngForm">
     <div>
       <label for="inputFirstName">First name:</label>
       <input type="text" [(ngModel)]="newContact.firstName" name="firstName" id="inputFirstName" class="form-control">
@@ -23,7 +23,7 @@
     -->
   </form>
 
-  <form (ngSubmit)="save()" [formGroup]="contactForm">
+  <form (ngSubmit)="addContactModelDriven()" [formGroup]="contactForm">
     <div>
       <label for="inputFirstName">First name:</label>
       <input type="text" formControlName="firstName" name="firstName" id="inputFirstNameR" class="form-control">
@@ -48,8 +48,8 @@
   </form>
 </div>
 
-<form [formGroup]="deleteForm" >
-  <table class="table" formArrayName="contacts">
+<form [formGroup]="checkBoxForm">
+  <table class="table" formArrayName="contactsFormArray">
     <tr>
       <th></th>
       <th>Name</th>
@@ -60,7 +60,7 @@
     <!--  <tr *ngFor="let c of contacts" app-contact-row [contact]="c"></tr>-->
 
     <tr *ngFor="let c of contacts; let i = index" [formGroupName]="i">
-      <td><input type="checkbox" formControlName="del"></td>
+      <td><input type="checkbox" formControlName="del" class="delBox"></td>
       <td>{{c.firstName}} {{c.surname}}</td>
       <td>{{c.email}}</td>
       <td>
@@ -77,5 +77,5 @@
 </app-loading>
 
 <!--<pre>{{newContact | json}}</pre>-->
-<pre>{{deleteForm.value | json}}</pre>
+<pre>{{checkBoxForm.value | json}}</pre>
 
