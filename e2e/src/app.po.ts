@@ -1,11 +1,15 @@
-import { browser, by, element } from 'protractor';
+import {browser, by, element, ElementFinder} from 'protractor';
 
 export class AppPage {
   navigateTo(): Promise<unknown> {
     return browser.get(browser.baseUrl) as Promise<unknown>;
   }
 
-  getTitleText(): Promise<string> {
-    return element(by.css('app-root .content span')).getText() as Promise<string>;
+  private getInputFirstName(): ElementFinder {
+    return element(by.id('inputFirstName'));
+  }
+
+  hasInputFirstName(): boolean {
+    return this.getInputFirstName() !== undefined;
   }
 }

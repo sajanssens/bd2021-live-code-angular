@@ -1,5 +1,5 @@
-import { AppPage } from './app.po';
-import { browser, logging } from 'protractor';
+import {AppPage} from './app.po';
+import {browser, logging} from 'protractor';
 
 describe('workspace-project App', () => {
   let page: AppPage;
@@ -8,9 +8,9 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should have input for first name', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('bd2021-live-code-angular app is running!');
+    expect(page.hasInputFirstName()).toBe(false);
   });
 
   afterEach(async () => {

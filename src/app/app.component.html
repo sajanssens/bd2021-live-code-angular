@@ -1,4 +1,12 @@
-<app-contact-form></app-contact-form>
+<ul>
+  <li routerLink="/home">Home</li>
+  <li routerLink="/contacts">Contacts</li>
+</ul>
+
+<hr>
+
+<router-outlet></router-outlet>
+
 <app-loading [message]="loadingMessage"
              (iAmClicked)="handleLoadingIsClicked($event)">
 </app-loading>
