@@ -9,6 +9,7 @@ import {HelloWorldComponent} from './hello-world/hello-world.component';
 import {ContactFormComponent} from './contact-form/contact-form.component';
 import {IntroComponent} from './intro/intro.component';
 import { LoadingComponent } from './loading/loading.component';
+import { ContactRowComponent } from './contact-row/contact-row.component';
 
 registerLocaleData(localeNL);
 
@@ -19,7 +20,8 @@ registerLocaleData(localeNL);
     HelloWorldComponent,
     ContactFormComponent,
     IntroComponent,
-    LoadingComponent
+    LoadingComponent,
+    ContactRowComponent
   ],
   imports: [
     BrowserModule, FormsModule, ReactiveFormsModule

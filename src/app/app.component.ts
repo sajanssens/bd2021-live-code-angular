@@ -7,5 +7,6 @@ export class AppComponent {
 
   handleLoadingIsClicked(someOutput: string): void {
     console.log(someOutput);
+    this.loadingMessage = someOutput;
   }
 }

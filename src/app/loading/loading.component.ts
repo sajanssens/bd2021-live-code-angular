@@ -25,5 +25,6 @@ export class LoadingComponent implements OnInit {
 
   handle(): void {
     this.iAmClicked.emit('thank you!');
+    this.message = undefined;
   }
 }
