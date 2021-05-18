@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ValidationErrors, Validators} from '@angular/forms';
+import {ContactService} from '../../services/contact.service';
 
 function emailValidator(control: AbstractControl): ValidationErrors | null {
   if (!control.value) {
@@ -23,6 +24,9 @@ export class ContactFormComponent implements OnInit {
   loadingMessage = 'loading...';
   emailInput = new FormControl('', [Validators.required, emailValidator]);
 
+  constructor(private contactService: ContactService) {
+  }
+
   ngOnInit(): void {
     this.contactForm = new FormGroup({
       firstName: new FormControl(''),
@@ -31,14 +35,9 @@ export class ContactFormComponent implements OnInit {
     });
   }
 
-  handleLoadingIsClicked(someOutput: string): void {
-    console.log(someOutput);
-    this.loadingMessage = someOutput;
-  }
-
 
   addContactModelDriven(): void {
-    this.contactAdded.emit(this.contactForm.value);
+    this.contactService.add(this.contactForm.value);
     this.contactForm.reset();
   }
 }

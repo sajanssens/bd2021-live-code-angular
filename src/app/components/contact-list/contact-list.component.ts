@@ -1,22 +1,24 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Contact} from '../contact-form/contact';
+import {ContactService} from '../../services/contact.service';
 
 @Component({
   selector: 'app-contact-list',
   templateUrl: './contact-list.component.html',
   styleUrls: ['./contact-list.component.css']
 })
-export class ContactListComponent implements OnInit, OnChanges {
+export class ContactListComponent implements OnInit {
 
-  @Input() contacts: Contact[];
+  contacts: Contact[];
 
   checkBoxForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private contactService: ContactService) {
   }
 
   ngOnInit(): void {
+    this.contacts = this.contactService.getContacts();
     this.initCheckBoxForm();
   }
 
@@ -32,9 +34,5 @@ export class ContactListComponent implements OnInit, OnChanges {
     });
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log('ngOnChanges');
-    this.initCheckBoxForm();
-  }
 
 }
