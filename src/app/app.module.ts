@@ -5,13 +5,15 @@ import {registerLocaleData} from '@angular/common';
 
 import {AppComponent} from './app.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HelloWorldComponent} from './hello-world/hello-world.component';
-import {ContactFormComponent} from './contact-form/contact-form.component';
-import {IntroComponent} from './intro/intro.component';
-import {LoadingComponent} from './loading/loading.component';
-import {ContactRowComponent} from './contact-row/contact-row.component';
+import {HelloWorldComponent} from './components/hello-world/hello-world.component';
+import {ContactFormComponent} from './components/contact-form/contact-form.component';
+import {IntroComponent} from './components/intro/intro.component';
+import {LoadingComponent} from './components/loading/loading.component';
+import {ContactRowComponent} from './components/contact-row/contact-row.component';
 import {RouterModule} from '@angular/router';
-import {HomeComponent} from './home/home.component';
+import {HomeComponent} from './pages/home/home.component';
+import {ContactListComponent} from './components/contact-list/contact-list.component';
+import {ContactPageComponent} from './pages/contact-page/contact-page.component';
 
 registerLocaleData(localeNL);
 
@@ -24,12 +26,14 @@ registerLocaleData(localeNL);
     IntroComponent,
     LoadingComponent,
     ContactRowComponent,
-    HomeComponent
+    HomeComponent,
+    ContactListComponent,
+    ContactPageComponent
   ],
   imports: [
     BrowserModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot([
       {path: 'home', component: HomeComponent},
-      {path: 'contacts', component: ContactFormComponent}
+      {path: 'contacts', component: ContactPageComponent}
     ])
   ],
   exports: [],
