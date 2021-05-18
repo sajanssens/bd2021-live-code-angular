@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Contact} from '../contact-form/contact';
 import {ContactService} from '../../services/contact.service';
+import {shareReplay} from 'rxjs/operators';
 
 @Component({
   selector: 'app-contact-list',
@@ -11,15 +12,20 @@ import {ContactService} from '../../services/contact.service';
 export class ContactListComponent implements OnInit {
 
   contacts: Contact[];
-
   checkBoxForm: FormGroup;
 
   constructor(private fb: FormBuilder, private contactService: ContactService) {
   }
 
   ngOnInit(): void {
-    this.contacts = this.contactService.getContacts();
-    this.initCheckBoxForm();
+    this.contactService.contactsDataUpdated$
+      .pipe(shareReplay())
+      .subscribe(c => {
+        this.contacts = c;
+        this.initCheckBoxForm();
+      });
+
+    this.contactService.getAll();
   }
 
   initCheckBoxForm(): void {

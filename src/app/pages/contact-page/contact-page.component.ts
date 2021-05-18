@@ -7,17 +7,4 @@ import {Component} from '@angular/core';
 })
 export class ContactPageComponent {
 
-  // @ViewChild(ContactListComponent)
-  // contactListComponent: ContactListComponent;
-
-
-  constructor() {
-  }
-
-
-  // handleAdd(c: Contact): void {
-
-  // this.contactListComponent.initCheckBoxForm();
-  // }
-
 }

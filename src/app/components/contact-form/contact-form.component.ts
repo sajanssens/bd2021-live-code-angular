@@ -18,10 +18,9 @@ function emailValidator(control: AbstractControl): ValidationErrors | null {
 })
 export class ContactFormComponent implements OnInit {
 
-  @Output() contactAdded = new EventEmitter();
+  // @Output() contactAdded = new EventEmitter();
 
   contactForm: FormGroup;
-  loadingMessage = 'loading...';
   emailInput = new FormControl('', [Validators.required, emailValidator]);
 
   constructor(private contactService: ContactService) {
@@ -34,7 +33,6 @@ export class ContactFormComponent implements OnInit {
       email: this.emailInput,
     });
   }
-
 
   addContactModelDriven(): void {
     this.contactService.add(this.contactForm.value);

@@ -26,9 +26,13 @@ li a, li #today {
   font-weight: bold;
 }
 
-li a:hover:not(.active) {
+li a:hover:not(.activeMenu) {
   background-color: #ddd;
   color: #444444;
+}
+
+li a:hover.activeMenu {
+  background-color: #222222;
 }
 
 li .activeMenu {
