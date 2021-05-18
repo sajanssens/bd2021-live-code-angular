@@ -1,0 +1,23 @@
+<form [formGroup]="checkBoxForm">
+  <table class="table" formArrayName="contactsFormArray">
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>E-mail address</th>
+      <th></th>
+    </tr>
+
+    <!--  <tr *ngFor="let c of contacts" app-contact-row [contact]="c"></tr>-->
+
+    <tr *ngFor="let c of contacts; let i = index" [formGroupName]="i">
+      <td><input type="checkbox" formControlName="del" class="delBox"></td>
+      <td>{{c.firstName}} {{c.surname}}</td>
+      <td>{{c.email}}</td>
+      <td>
+        <button class="btn">Edit</button>
+        <button class="btn btn-danger">Delete</button>
+      </td>
+    </tr>
+  </table>
+  <button>Delete selected</button>
+</form>
