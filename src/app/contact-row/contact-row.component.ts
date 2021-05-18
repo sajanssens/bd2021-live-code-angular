@@ -10,6 +10,7 @@ export class ContactRowComponent implements OnInit {
 
   @Input() contact: Contact;
 
+
   constructor() {
   }
 

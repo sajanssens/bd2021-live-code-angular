@@ -1,5 +1,5 @@
 <div class="flex">
-  <form (ngSubmit)="addContactTemplateDriven(myForm)" #myForm="ngForm">
+  <!--<form (ngSubmit)="addContactTemplateDriven(myForm)" #myForm="ngForm">
     <div>
       <label for="inputFirstName">First name:</label>
       <input type="text" [(ngModel)]="newContact.firstName" name="firstName" id="inputFirstName" class="form-control">
@@ -18,24 +18,24 @@
 
     <button [disabled]="myForm.invalid" id="submitButton" class="btn btn-primary">Add</button>
 
-    <!--
+    &lt;!&ndash;
       <tag [dataattribute]="waarde" (event)="waarde2"> {{content...}} </tag>
-    -->
-  </form>
+    &ndash;&gt;
+  </form>-->
 
   <form (ngSubmit)="addContactModelDriven()" [formGroup]="contactForm">
     <div>
-      <label for="inputFirstName">First name:</label>
+      <label for="inputFirstNameR">First name:</label>
       <input type="text" formControlName="firstName" name="firstName" id="inputFirstNameR" class="form-control">
     </div>
 
     <div>
-      <label for="inputSurname">Surname:</label>
+      <label for="inputSurnameR">Surname:</label>
       <input type="text" formControlName="surname" name="surname" id="inputSurnameR" class="form-control">
     </div>
 
     <div>
-      <label for="inputEmail">E-mail address:</label>
+      <label for="inputEmailR">E-mail address:</label>
       <input type="text" formControlName="email" name="email" id="inputEmailR" class="form-control" required>
     </div>
 
@@ -72,10 +72,10 @@
   <button>Delete selected</button>
 </form>
 
-<app-loading [message]="loadingMessage"
-             (iAmClicked)="handleLoadingIsClicked($event)">
-</app-loading>
+<!--<app-loading [message]="loadingMessage"-->
+<!--             (iAmClicked)="handleLoadingIsClicked($event)">-->
+<!--</app-loading>-->
 
 <!--<pre>{{newContact | json}}</pre>-->
-<pre>{{checkBoxForm.value | json}}</pre>
+<!--<pre>{{checkBoxForm.value | json}}</pre>-->
 

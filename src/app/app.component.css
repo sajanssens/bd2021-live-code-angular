@@ -1,0 +1,41 @@
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #e7e7e7;
+  background-color: rgb(30, 138, 210);
+}
+
+li {
+  float: left;
+  border-right: 1px solid #bbb;
+}
+
+li:last-child {
+  border-right: none;
+  float: right;
+}
+
+li a, li #today {
+  display: block;
+  color: #313131;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+li a:hover:not(.active) {
+  background-color: #ddd;
+  color: #444444;
+}
+
+li .activeMenu {
+  color: rgb(238, 238, 238);;
+  background-color: #585858;
+}
+
+.user{
+  text-align: right;
+}
