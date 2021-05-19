@@ -39,7 +39,18 @@
       "surname": "Janssens",
       "email": "n.s.janssens@gmail.com",
       "id": 6
+    },
+    {
+      "id": 19,
+      "firstName": "Harry",
+      "surname": "Smits"
     }
   ],
-  "users": []
+  "users": [
+    {
+      "id": 1,
+      "username": "harry",
+      "password": "ushJgV6687H"
+    }
+  ]
 }

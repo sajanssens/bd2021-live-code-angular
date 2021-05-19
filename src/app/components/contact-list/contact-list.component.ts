@@ -19,7 +19,6 @@ export class ContactListComponent implements OnInit {
 
   ngOnInit(): void {
     this.contactService.contactsDataUpdated$
-      .pipe(shareReplay())
       .subscribe(c => {
         this.contacts = c;
         this.initCheckBoxForm();

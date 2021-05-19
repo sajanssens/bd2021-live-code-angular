@@ -1,12 +1,16 @@
 import {Injectable} from '@angular/core';
 import {Contact} from '../components/contact-form/contact';
 import {Subject} from 'rxjs';
-import {shareReplay} from 'rxjs/operators';
+import {HttpClient} from '@angular/common/http';
+import {serverUrl} from '../../environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContactService {
+
+  uri = serverUrl + '/contacts';
 
   // tslint:disable-next-line:variable-name
   private _contactsData: Contact[] = [
@@ -14,6 +18,9 @@ export class ContactService {
     {firstName: 'Frank', surname: 'Muscles', email: 'frank@muscles.com'},
     {firstName: 'Eddy', surname: 'Valentino', email: 'eddy@valfam.co.uk'}
   ];
+
+  constructor(private http: HttpClient) {
+  }
 
   // tslint:disable-next-line:variable-name
   private _contactsDataUpdated$ = new Subject<Contact[]>();
@@ -24,7 +31,13 @@ export class ContactService {
   }
 
   getAll(): void {
-    this.throwUpdateEvent();
+    this.http.get<Contact[]>(this.uri) // get contacts from server
+      .subscribe(  // when the results arrive (some time in the future):
+        // rise the contactsUpdated event and supply the contacts
+        contacts => {
+          this._contactsDataUpdated$.next(contacts);
+        }
+      );
   }
 
   get contactsDataUpdated$(): Subject<Contact[]> {

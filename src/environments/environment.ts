@@ -4,9 +4,11 @@
 
 export const environment = {
   production: false,
-  databaseurl: '...'
+
+
 };
 
+export const serverUrl = 'http://localhost:3000';
 
 
 /*
