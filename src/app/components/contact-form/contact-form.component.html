@@ -1,28 +1,4 @@
 <div class="flex">
-  <!--<form (ngSubmit)="addContactTemplateDriven(myForm)" #myForm="ngForm">
-    <div>
-      <label for="inputFirstName">First name:</label>
-      <input type="text" [(ngModel)]="newContact.firstName" name="firstName" id="inputFirstName" class="form-control">
-    </div>
-
-    <div>
-      <label for="inputSurname">Surname:</label>
-      <input type="text" [(ngModel)]="newContact.surname" name="surname" id="inputSurname" class="form-control">
-    </div>
-
-    <div>
-      <label for="inputEmail">E-mail address:</label>
-      <input type="text" [(ngModel)]="newContact.email" name="email" id="inputEmail" class="form-control" required
-             #myemail="ngModel"><span *ngIf="myemail.invalid">Vul in...</span>
-    </div>
-
-    <button [disabled]="myForm.invalid" id="submitButton" class="btn btn-primary">Add</button>
-
-    &lt;!&ndash;
-      <tag [dataattribute]="waarde" (event)="waarde2"> {{content...}} </tag>
-    &ndash;&gt;
-  </form>-->
-
   <form (ngSubmit)="addContactModelDriven()" [formGroup]="contactForm">
     <div>
       <label for="inputFirstNameR">First name:</label>
@@ -37,24 +13,7 @@
     <div>
       <label for="inputEmailR">E-mail address:</label>
       <input type="text" formControlName="email" name="email" id="inputEmailR" class="form-control" required>
-      <span *ngIf="emailInput.errors?.required">Vul in...</span>
+      <button class="btn btn-primary">Add</button>
     </div>
-
-    <button class="btn btn-primary">Add</button>
-
-    <!--
-      <tag [dataattribute]="waarde" (event)="waarde2"> {{content...}} </tag>
-    -->
-
   </form>
 </div>
-
-
-
-<!--<app-loading [message]="loadingMessage"-->
-<!--             (iAmClicked)="handleLoadingIsClicked($event)">-->
-<!--</app-loading>-->
-
-<!--<pre>{{newContact | json}}</pre>-->
-<!--<pre>{{checkBoxForm.value | json}}</pre>-->
-

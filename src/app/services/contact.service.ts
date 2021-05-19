@@ -26,8 +26,13 @@ export class ContactService {
   private _contactsDataUpdated$ = new Subject<Contact[]>();
 
   add(c: Contact): void {
-    this._contactsData.push(c);
-    this.throwUpdateEvent();
+    this.http.post<Contact>(this.uri, c) // post contact to server
+      .subscribe(() => this.getAll());   // when posted: getAll (refresh)
+  }
+
+  delete(c: Contact): void {
+    this.http.delete(`${this.uri}/${c.id}`) // delete contact from server
+      .subscribe(() => this.getAll()); // when deleted: getAll (refresh)
   }
 
   getAll(): void {

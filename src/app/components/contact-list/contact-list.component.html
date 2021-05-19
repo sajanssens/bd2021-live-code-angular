@@ -1,3 +1,5 @@
+<h2>The contacts</h2>
+
 <form [formGroup]="checkBoxForm">
   <table class="table" formArrayName="contactsFormArray">
     <tr>
@@ -15,7 +17,7 @@
       <td>{{c.email}}</td>
       <td>
         <button class="btn">Edit</button>
-        <button class="btn btn-danger">Delete</button>
+        <button class="btn btn-danger" (click)="delete(c)">Delete</button>
       </td>
     </tr>
   </table>

@@ -41,9 +41,16 @@
       "id": 6
     },
     {
-      "id": 19,
-      "firstName": "Harry",
-      "surname": "Smits"
+      "firstName": "Bram",
+      "surname": "Janssens",
+      "email": "s.a.janssens@gmail.com",
+      "id": 20
+    },
+    {
+      "firstName": "Bram",
+      "surname": "Janssens",
+      "email": "s.a.janssens@gmail.com",
+      "id": 21
     }
   ],
   "users": [

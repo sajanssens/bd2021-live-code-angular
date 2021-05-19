@@ -18,8 +18,6 @@ function emailValidator(control: AbstractControl): ValidationErrors | null {
 })
 export class ContactFormComponent implements OnInit {
 
-  // @Output() contactAdded = new EventEmitter();
-
   contactForm: FormGroup;
   emailInput = new FormControl('', [Validators.required, emailValidator]);
 

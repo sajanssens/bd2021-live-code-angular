@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Contact} from '../contact-form/contact';
 import {ContactService} from '../../services/contact.service';
-import {shareReplay} from 'rxjs/operators';
 
 @Component({
   selector: 'app-contact-list',
@@ -11,7 +10,7 @@ import {shareReplay} from 'rxjs/operators';
 })
 export class ContactListComponent implements OnInit {
 
-  contacts: Contact[];
+  contacts: Contact[] = [];
   checkBoxForm: FormGroup;
 
   constructor(private fb: FormBuilder, private contactService: ContactService) {
@@ -24,10 +23,15 @@ export class ContactListComponent implements OnInit {
         this.initCheckBoxForm();
       });
 
+    this.initCheckBoxForm();
     this.contactService.getAll();
   }
 
-  initCheckBoxForm(): void {
+  delete(c: Contact): void {
+    this.contactService.delete(c);
+  }
+
+  private initCheckBoxForm(): void {
     const formContacts: FormGroup[] = [];
 
     for (const c of this.contacts) {
