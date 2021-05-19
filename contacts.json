@@ -1,0 +1,45 @@
+{
+  "contacts": [
+    {
+      "id": 1,
+      "firstName": "Sammie",
+      "surname": "Smith",
+      "email": "sam.smith@music.com",
+      "edit": false
+    },
+    {
+      "id": 2,
+      "firstName": "Frank",
+      "surname": "Muscles",
+      "email": "frank@muscles.com",
+      "edit": false
+    },
+    {
+      "id": 3,
+      "firstName": "Eddy",
+      "surname": "Valentino",
+      "email": "eddy@valfam.co.uk"
+    },
+    {
+      "firstName": "Bram",
+      "surname": "Janssens",
+      "email": "s.a.janssens@gmail.com",
+      "id": 4,
+      "edit": false
+    },
+    {
+      "firstName": "Gijs",
+      "surname": "Janssens",
+      "email": "gijs.j.janssens@gmail.com",
+      "id": 5,
+      "edit": false
+    },
+    {
+      "firstName": "Niek",
+      "surname": "Janssens",
+      "email": "n.s.janssens@gmail.com",
+      "id": 6
+    }
+  ],
+  "users": []
+}
