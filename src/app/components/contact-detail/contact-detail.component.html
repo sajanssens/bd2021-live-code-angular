@@ -1,5 +1,7 @@
+<h2>Details of contact {{contact?.id}}</h2>
+
 <div class="flex">
-  <form (ngSubmit)="addContactModelDriven()" [formGroup]="contactForm">
+  <form (ngSubmit)="save()" [formGroup]="contactForm">
     <div>
       <label for="inputFirstNameR">First name:</label>
       <input type="text" formControlName="firstName" name="firstName" id="inputFirstNameR" class="form-control">
@@ -12,8 +14,8 @@
 
     <div>
       <label for="inputEmailR">E-mail address:</label>
-      <input type="text" formControlName="email" name="email" id="inputEmailR" class="form-control">
-      <button class="btn btn-primary">Add</button>
+      <input type="text" formControlName="email" name="email" id="inputEmailR" class="form-control" required>
+      <button class="btn btn-primary">Save</button>
     </div>
   </form>
 </div>

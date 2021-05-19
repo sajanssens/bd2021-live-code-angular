@@ -15,6 +15,7 @@ import {HomeComponent} from './pages/home/home.component';
 import {ContactListComponent} from './components/contact-list/contact-list.component';
 import {ContactPageComponent} from './pages/contact-page/contact-page.component';
 import {HttpClientModule} from '@angular/common/http';
+import {ContactDetailComponent} from './components/contact-detail/contact-detail.component';
 
 registerLocaleData(localeNL);
 
@@ -29,13 +30,15 @@ registerLocaleData(localeNL);
     ContactRowComponent,
     HomeComponent,
     ContactListComponent,
-    ContactPageComponent
+    ContactPageComponent,
+    ContactDetailComponent
   ],
   imports: [
     BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule,
     RouterModule.forRoot([
       {path: 'home', component: HomeComponent},
-      {path: 'contacts', component: ContactPageComponent}
+      {path: 'contacts', component: ContactPageComponent},
+      {path: 'contacts/:id', component: ContactDetailComponent},
     ])
   ],
   exports: [],

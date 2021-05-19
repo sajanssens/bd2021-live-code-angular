@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Contact} from '../components/contact-form/contact';
-import {Subject} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {serverUrl} from '../../environments/environment';
 
@@ -12,18 +12,18 @@ export class ContactService {
 
   uri = serverUrl + '/contacts';
 
-  // tslint:disable-next-line:variable-name
-  private _contactsData: Contact[] = [
-    {firstName: 'Sam', surname: 'Smith', email: 'sam.smith@music.com'},
-    {firstName: 'Frank', surname: 'Muscles', email: 'frank@muscles.com'},
-    {firstName: 'Eddy', surname: 'Valentino', email: 'eddy@valfam.co.uk'}
-  ];
-
   constructor(private http: HttpClient) {
   }
 
   // tslint:disable-next-line:variable-name
   private _contactsDataUpdated$ = new Subject<Contact[]>();
+
+  getAll(): void {
+    this.http.get<Contact[]>(this.uri) // get contacts from server
+      .subscribe(                      // when the results arrive (some time in the future):
+        contacts => this._contactsDataUpdated$.next(contacts)
+      );                               // rise the contactsUpdated event and supply the contacts
+  }
 
   add(c: Contact): void {
     this.http.post<Contact>(this.uri, c) // post contact to server
@@ -32,25 +32,24 @@ export class ContactService {
 
   delete(c: Contact): void {
     this.http.delete(`${this.uri}/${c.id}`) // delete contact from server
-      .subscribe(() => this.getAll()); // when deleted: getAll (refresh)
+      .subscribe(() => this.getAll());      // when deleted: getAll (refresh)
   }
 
-  getAll(): void {
-    this.http.get<Contact[]>(this.uri) // get contacts from server
-      .subscribe(  // when the results arrive (some time in the future):
-        // rise the contactsUpdated event and supply the contacts
-        contacts => {
-          this._contactsDataUpdated$.next(contacts);
-        }
-      );
+  search(value: string): void {
+    this.http.get<Contact[]>(`${this.uri}?q=${value}`)
+      .subscribe(contacts => this._contactsDataUpdated$.next(contacts));
   }
 
   get contactsDataUpdated$(): Subject<Contact[]> {
     return this._contactsDataUpdated$;
   }
 
-  private throwUpdateEvent(): void {
-    this._contactsDataUpdated$.next(this._contactsData);
+  get(id: number): Observable<Contact> {
+    return this.http.get<Contact>(`${this.uri}/${id}`);
   }
 
+  update(c: Contact, id: number): void {
+    this.http.put<Contact[]>(`${this.uri}/${id}`, c) // put contact to server
+      .subscribe(() => this.getAll());  // when posted: getAll (refresh)
+  }
 }

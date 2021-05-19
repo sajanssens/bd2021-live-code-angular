@@ -1,6 +1,8 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ValidationErrors, Validators} from '@angular/forms';
 import {ContactService} from '../../services/contact.service';
+import {Contact} from './contact';
+import {Observable} from 'rxjs';
 
 function emailValidator(control: AbstractControl): ValidationErrors | null {
   if (!control.value) {
@@ -17,6 +19,9 @@ function emailValidator(control: AbstractControl): ValidationErrors | null {
   styleUrls: ['./contact-form.component.css']
 })
 export class ContactFormComponent implements OnInit {
+
+
+  @Input() contact: Contact;
 
   contactForm: FormGroup;
   emailInput = new FormControl('', [Validators.required, emailValidator]);
