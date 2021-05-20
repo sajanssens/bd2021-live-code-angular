@@ -7,10 +7,10 @@
       "id": 2
     },
     {
-      "id": 3,
       "firstName": "Eddy",
       "surname": "Valentino",
-      "email": "eddy@valfam.co.uk"
+      "email": "eddy@valfam.co.uk",
+      "id": 3
     },
     {
       "firstName": "Bram",
@@ -23,8 +23,7 @@
       "firstName": "Gijs",
       "surname": "Janssens",
       "email": "gijs.j.janssens@gmail.com",
-      "id": 5,
-      "edit": false
+      "id": 5
     },
     {
       "firstName": "Niek",

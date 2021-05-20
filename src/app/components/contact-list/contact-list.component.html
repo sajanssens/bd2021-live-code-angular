@@ -21,7 +21,8 @@
       <td>{{c.firstName}} {{c.surname}}</td>
       <td>{{c.email}}</td>
       <td>
-        <button class="btn" routerLink="/contacts/{{c.id}}">Edit</button>
+        <button class="btn" routerLink="/contacts/{{c.id}}">More</button>
+        <button class="btn" routerLink="/contactdetails/{{c.id}}">Edit</button>
         <button class="btn btn-danger" (click)="delete(c)">Delete</button>
       </td>
     </tr>
