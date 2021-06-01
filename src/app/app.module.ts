@@ -43,6 +43,7 @@ registerLocaleData(localeNL);
         }]
       },
       {path: 'contactdetails/:id', component: ContactDetailComponent},
+      {path: '', component: HomeComponent},
     ])
   ],
   exports: [],

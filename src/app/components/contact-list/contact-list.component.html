@@ -8,10 +8,10 @@
 <form [formGroup]="checkBoxForm">
   <table class="table" formArrayName="contactsFormArray">
     <tr>
-      <th></th>
-      <th>Name</th>
-      <th>E-mail address</th>
-      <th></th>
+      <th scope="col"></th>
+      <th scope="col">Name</th>
+      <th scope="col">E-mail address</th>
+      <th scope="col">Action</th>
     </tr>
 
     <!--  <tr *ngFor="let c of contacts" app-contact-row [contact]="c"></tr>-->
@@ -21,11 +21,13 @@
       <td>{{c.firstName}} {{c.surname}}</td>
       <td>{{c.email}}</td>
       <td>
-        <button class="btn" routerLink="/contacts/{{c.id}}">More</button>
-        <button class="btn" routerLink="/contactdetails/{{c.id}}">Edit</button>
-        <button class="btn btn-danger" (click)="delete(c)">Delete</button>
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-primary btn-sm" routerLink="/contacts/{{c.id}}">More</button>
+          <button type="button" class="btn btn-secondary btn-sm" routerLink="/contactdetails/{{c.id}}">Edit</button>
+          <button type="button" class="btn btn-danger btn-sm" (click)="delete(c)">Delete</button>
+        </div>
       </td>
     </tr>
   </table>
-  <button>Delete selected</button>
+  <button type="button" class="btn btn-warning btn-sm" >Delete selected</button>
 </form>

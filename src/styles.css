@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
+/*
 body {
   font-family: sans-serif;
   background-color: lightgray;
@@ -31,7 +32,7 @@ th {
 td {
   border-bottom: 1px solid lightgray;
 }
-td button { /* edit, delete and save buttons in contacts table*/
+td button { !* edit, delete and save buttons in contacts table*!
   border: 0;
   outline: 0;
   cursor: pointer;
@@ -67,7 +68,7 @@ td a:first-child {
   margin-right: 10px;
 }
 
-/* copy column directive styling */
+!* copy column directive styling *!
 .in-selection {
   background: lightgoldenrodyellow;
 }
@@ -79,3 +80,4 @@ table[copyColumn] {
   border-collapse: collapse;
   user-select: none;
 }
+*/
