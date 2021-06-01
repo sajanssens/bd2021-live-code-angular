@@ -37,8 +37,7 @@ registerLocaleData(localeNL);
     BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule,
     RouterModule.forRoot([
       {path: 'home', component: HomeComponent},
-      {
-        path: 'contacts', component: ContactPageComponent,
+      {path: 'contacts', component: ContactPageComponent, // has children, so needs to have a router-outlet!
         children: [{
           path: ':id', component: ContactDetailComponent
         }]
