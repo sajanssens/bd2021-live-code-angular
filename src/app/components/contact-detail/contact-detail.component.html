@@ -3,17 +3,17 @@
 <div class="flex">
   <form (ngSubmit)="save()" [formGroup]="contactForm">
     <div>
-      <label for="inputFirstNameR">First name:</label>
+      <label for="inputFirstNameR">First name</label>
       <input type="text" formControlName="firstName" name="firstName" id="inputFirstNameR" class="form-control">
     </div>
 
     <div>
-      <label for="inputSurnameR">Surname:</label>
+      <label for="inputSurnameR">Surname</label>
       <input type="text" formControlName="surname" name="surname" id="inputSurnameR" class="form-control">
     </div>
 
     <div>
-      <label for="inputEmailR">E-mail address:</label>
+      <label for="inputEmailR">E-mail</label>
       <input type="text" formControlName="email" name="email" id="inputEmailR" class="form-control" required>
       <button class="btn btn-primary">Save</button>
     </div>

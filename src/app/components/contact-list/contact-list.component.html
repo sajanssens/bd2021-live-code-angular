@@ -1,16 +1,18 @@
-<h2>The contacts</h2>
-
-<form (ngSubmit)="search()" [formGroup]="searchForm">
-  <input type="text" formControlName="search" name="search" id="search" class="form-control"
-         placeholder="Type hier om te zoeken...">
+<form class="row g-3" (ngSubmit)="search()" [formGroup]="searchForm">
+  <div class="col-12">
+    <input type="text" formControlName="search" name="search" id="search" class="form-control"
+           placeholder="Search on name or email">
+  </div>
 </form>
+
+<hr class="my-4">
 
 <form [formGroup]="checkBoxForm">
   <table class="table" formArrayName="contactsFormArray">
     <tr>
       <th scope="col"></th>
       <th scope="col">Name</th>
-      <th scope="col">E-mail address</th>
+      <th scope="col">E-mail</th>
       <th scope="col">Action</th>
     </tr>
 
@@ -29,5 +31,5 @@
       </td>
     </tr>
   </table>
-  <button type="button" class="btn btn-warning btn-sm" >Delete selected</button>
+  <button type="button" class="btn btn-warning btn-sm">Delete selected</button>
 </form>

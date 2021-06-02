@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light mb-4" style="background-color: rgb(30, 138, 210);">
+<nav class="navbar navbar-expand-md navbar-light mb-1" style="background-color: rgb(30, 138, 210);">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">HRM</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
@@ -10,15 +10,15 @@
         <li class="nav-item">
           <a class="nav-link" routerLinkActive="active" routerLink="/home">Home</a>
         </li>
-        <li class="nav-item">
-
-        </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" routerLinkActive="active" routerLink="/contacts">Contacts</a>
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false" routerLinkActive="active" routerLink="/contacts">Contacts</a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="#">Action</a></li>
             <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
@@ -30,9 +30,9 @@
   </div>
 </nav>
 
-<div class="col-lg-8 mx-auto p-3 py-md-5">
+<div class="col-lg-8 mx-auto p-3 py-md-2">
   <main>
-    <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+    <header class="d-flex align-items-center pb-3 mb-1 border-bottom">
       <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="me-2" viewBox="0 0 25 25" role="img">
           <title>HRM</title>
@@ -43,7 +43,6 @@
         <span class="fs-4">HRM application</span>
       </a>
     </header>
-    <p class="fs-5 col-md-8">Manage your contacts quickly and easily.</p>
     <div class="row g-5">
       <div class="col-md">
         <router-outlet></router-outlet> <!--router outlet for root component-->
