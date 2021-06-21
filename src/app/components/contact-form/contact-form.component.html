@@ -1,18 +1,69 @@
-<form class="row" (ngSubmit)="addContactModelDriven()" [formGroup]="contactForm">
-  <div class="col-md-12">Add new contact</div>
+<div class="col-md-12" (click)="toggleForm()">Add new contact <i class="far fa-{{plusMinus}}-square"></i></div>
 
-  <div class="col-md-3">
-    <input type="text" formControlName="firstName" name="firstName" id="inputFirstNameR" class="form-control"
-           placeholder="First name">
-  </div>
-  <div class="col-md-4">
-    <input type="text" formControlName="surname" name="surname" id="inputSurnameR" class="form-control"
-           placeholder ="Surname">
-  </div>
-  <div class="col-md-4">
-    <input type="text" formControlName="email" name="email" id="inputEmailR" class="form-control" placeholder="Email">
-  </div>
-  <div class="col-md-1 justify-content-end">
-    <button type="submit" id="submit" class="btn btn-primary">Save</button>
-  </div>
-</form>
+<ng-container *ngIf="plusMinus==='minus'">
+  <form (ngSubmit)="addContactModelDriven()" [formGroup]="contactForm">
+    <div class="d-flex">
+      <div class="p-1">
+        <input type="text" formControlName="firstName" name="firstName" id="inputFirstNameR" class="form-control"
+               placeholder="First name">
+      </div>
+      <div class="p-1">
+        <input type="text" formControlName="surname" name="surname" id="inputSurnameR" class="form-control"
+               placeholder="Surname">
+      </div>
+      <div class="p-1 flex-grow-1">
+        <div class="input-group">
+          <div class="input-group-text">@</div>
+          <input type="text" formControlName="email" name="email" id="inputEmailR" class="form-control"
+                 placeholder="Email">
+        </div>
+      </div>
+      <div class="p-1 d-flex ms-auto align-content-center flex-wrap">
+        <input type="submit" id="submit" class="btn btn-primary" value="Save">
+      </div>
+    </div>
+
+    <div class="d-flex">
+      <div class="p-1">
+        <label for="gender">Gender</label>
+        <select formControlName="gender" name="gender" id="gender" class="form-select">
+          <option>Male</option>
+          <option>Female</option>
+          <option>Unknown</option>
+        </select>
+      </div>
+      <div class="p-1">
+        <label>Languages</label>
+        <div class="row" formArrayName="languages">
+          <div class="col-auto">
+            <div class="form-check" formGroupName="0">
+              <input class="form-check-input" type="checkbox" id="java" formControlName="sel">
+              <label class="form-check-label" for="java">Java</label>
+            </div>
+          </div>
+          <div class="col-auto">
+            <div class="form-check" formGroupName="1">
+              <input class="form-check-input" type="checkbox" id="kotlin" formControlName="sel">
+              <label class="form-check-label" for="kotlin">Kotlin</label>
+            </div>
+          </div>
+          <div class="col-auto">
+            <div class="form-check" formGroupName="2">
+              <input class="form-check-input" type="checkbox" id="typescript" formControlName="sel">
+              <label class="form-check-label" for="typescript">Typescript</label>
+            </div>
+          </div>
+          <div class="col-auto">
+            <div class="form-check" formGroupName="3">
+              <input class="form-check-input" type="checkbox" id="php" formControlName="sel">
+              <label class="form-check-label" for="php">PHP</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</ng-container>
+
+
+<!--<pre>{{contactForm.value | json}}</pre>-->

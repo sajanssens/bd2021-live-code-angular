@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {ContactService} from '../../services/contact.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Contact} from '../contact-form/contact';
 
 @Component({
   selector: 'app-contact-detail',
@@ -12,7 +11,6 @@ import {Contact} from '../contact-form/contact';
 export class ContactDetailComponent implements OnInit {
 
   contactForm: FormGroup;
-  contact: Contact;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -21,24 +19,36 @@ export class ContactDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
+    // static:
+    // one-off (snapshot) during life time of this component:
+    // const id = +this.route.snapshot.paramMap.get('id');
+    // this.getContact(id);
 
-    this.service.get(id).subscribe(c => {
-        this.contact = c;
-        this.contactForm.patchValue(c); // fill the form with the gotten contact
+    // or reactive:
+
+    // for each time the id changes during life time of this component:
+    this.route.paramMap.subscribe((params: ParamMap) => {
+        this.getContact(+params.get('id'));
       }
     );
 
     this.contactForm = this.fb.group({
+      id: [''],
       firstName: ['', Validators.required],
       surname: ['', Validators.required],
       email: ['', Validators.required],
     });
   }
 
+  private getContact(id: number): void {
+    this.service.get(id).subscribe(c => {
+        this.contactForm.patchValue(c); // fill the form with the gotten contact
+      }
+    );
+  }
+
   save(): void {
-    console.log(this.contact);
-    this.service.update(this.contactForm.value, this.contact.id);
+    this.service.update(this.contactForm.value, this.contactForm.value.id);
     this.router.navigate(['/contacts']);
   }
 

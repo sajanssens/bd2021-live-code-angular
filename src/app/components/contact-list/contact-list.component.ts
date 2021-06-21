@@ -48,7 +48,6 @@ export class ContactListComponent implements OnInit {
     });
   }
 
-
   search(): void {
     console.log('searching...');
     const value = this.searchForm.value.search;

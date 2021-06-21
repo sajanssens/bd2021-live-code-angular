@@ -1,21 +1,27 @@
-<h2>Details of contact {{contact?.id}}</h2>
+<h4>Details of contact {{contactForm.value?.id}}</h4>
 
-<div class="flex">
-  <form (ngSubmit)="save()" [formGroup]="contactForm">
-    <div>
+<form (ngSubmit)="save()" [formGroup]="contactForm">
+  <input type="hidden" formControlName="id" name="id" id="idR" class="form-control">
+  <div class="d-flex">
+    <div class="p-1">
       <label for="inputFirstNameR">First name</label>
       <input type="text" formControlName="firstName" name="firstName" id="inputFirstNameR" class="form-control">
     </div>
 
-    <div>
+    <div class="p-1">
       <label for="inputSurnameR">Surname</label>
       <input type="text" formControlName="surname" name="surname" id="inputSurnameR" class="form-control">
     </div>
 
-    <div>
+    <div class="p-1 flex-grow-1">
       <label for="inputEmailR">E-mail</label>
-      <input type="text" formControlName="email" name="email" id="inputEmailR" class="form-control" required>
-      <button class="btn btn-primary">Save</button>
+      <div class="input-group">
+        <div class="input-group-text">@</div>
+        <input type="text" formControlName="email" name="email" id="inputEmailR" class="form-control" required>
+      </div>
     </div>
-  </form>
-</div>
+    <div class="p-1 d-flex align-content-end flex-wrap">
+      <input type="submit" id="submit" class="btn btn-primary" value="Save">
+    </div>
+  </div>
+</form>

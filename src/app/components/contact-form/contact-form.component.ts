@@ -1,8 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {AbstractControl, FormControl, FormGroup, ValidationErrors, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators} from '@angular/forms';
 import {ContactService} from '../../services/contact.service';
 import {Contact} from './contact';
-import {Observable} from 'rxjs';
 
 function emailValidator(control: AbstractControl): ValidationErrors | null {
   if (!control.value) {
@@ -20,25 +19,36 @@ function emailValidator(control: AbstractControl): ValidationErrors | null {
 })
 export class ContactFormComponent implements OnInit {
 
-
   @Input() contact: Contact;
 
   contactForm: FormGroup;
-  emailInput = new FormControl('', [Validators.required, emailValidator]);
+  plusMinus = 'plus';
 
-  constructor(private contactService: ContactService) {
+  constructor(private contactService: ContactService, private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
     this.contactForm = new FormGroup({
       firstName: new FormControl(''),
       surname: new FormControl(''),
-      email: this.emailInput,
+      email: new FormControl('', [Validators.required, emailValidator]),
+      gender: new FormControl(''),
+      languages: this.fb.array([
+        this.fb.group({sel: false}),
+        this.fb.group({sel: false}),
+        this.fb.group({sel: false}),
+        this.fb.group({sel: false})
+      ])
     });
   }
 
   addContactModelDriven(): void {
     this.contactService.add(this.contactForm.value);
     this.contactForm.reset();
+    this.toggleForm();
+  }
+
+  toggleForm(): void {
+    this.plusMinus = (this.plusMinus === 'plus') ? 'minus' : 'plus';
   }
 }

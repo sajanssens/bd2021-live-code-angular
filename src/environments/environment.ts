@@ -8,7 +8,8 @@ export const environment = {
 
 };
 
-export const serverUrl = 'http://localhost:9080/contactsrest/api';
+// export const serverUrl = 'http://localhost:9080/contactsrest/api';
+export const serverUrl = 'http://localhost:3000';
 
 
 /*

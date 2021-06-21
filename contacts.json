@@ -1,23 +1,22 @@
 {
   "contacts": [
     {
+      "id": 2,
       "firstName": "Frank",
       "surname": "Muscles",
-      "email": "frank@muscles.com",
-      "id": 2
+      "email": "frank@muscles.com"
     },
     {
+      "id": 3,
       "firstName": "Eddy",
       "surname": "Valentino",
-      "email": "eddy@valfam.co.uk",
-      "id": 3
+      "email": "eddy@valfam.co.uk"
     },
     {
       "firstName": "Bram",
       "surname": "Janssens",
       "email": "s.a.janssens@gmail.com",
-      "id": 4,
-      "edit": false
+      "id": 4
     },
     {
       "firstName": "Gijs",
