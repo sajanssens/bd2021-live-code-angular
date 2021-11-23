@@ -16,12 +16,12 @@ export class ContactService {
   }
 
   // tslint:disable-next-line:variable-name
-  private _contactsDataUpdated$ = new Subject<Contact[]>();
+  private _contactsDataUpdated$ = new Subject<Contact[]>(); // is een observable
 
   getAll(): void {
     this.http.get<Contact[]>(this.uri) // get contacts from server
       .subscribe(                      // when the results arrive (some time in the future):
-        contacts => this._contactsDataUpdated$.next(contacts)
+        responseData => this._contactsDataUpdated$.next(responseData) // throw the next event on _contactsDataUpdated$
       );                               // rise the contactsUpdated event and supply the contacts
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-intro',
@@ -12,6 +12,7 @@ export class IntroComponent implements OnInit {
   toggle = false;
   input = 'input text here...';
   cars;
+  car = {make: 'Skoda', type: 'Fabia', price: 21000.4353456};
 
   // methods
   ngOnInit(): void {
@@ -26,6 +27,10 @@ export class IntroComponent implements OnInit {
   handleClick(): void {
     this.title = this.toggle ? 'clicked!' : 'yo..';
     this.toggle = !this.toggle;
+  }
+
+  myStyle(): string {
+    return this.toggle ? 'color:red' : 'color:green';
   }
 
 }

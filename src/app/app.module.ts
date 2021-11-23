@@ -20,8 +20,9 @@ import {ContactDetailComponent} from './components/contact-detail/contact-detail
 registerLocaleData(localeNL);
 
 
-@NgModule({
-  declarations: [
+@NgModule({ // decorator = annotatie
+  bootstrap: [AppComponent], // wat is mijn root component?
+  declarations: [ // welke componenten zitten er in deze module en kunnen gebruikt gaan worden?
     AppComponent,
     HelloWorldComponent,
     ContactFormComponent,
@@ -33,22 +34,25 @@ registerLocaleData(localeNL);
     ContactPageComponent,
     ContactDetailComponent
   ],
-  imports: [
-    BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule,
-    RouterModule.forRoot([
+  imports: [ // welke dingen uit andere modules wil ik in deze module gebruiken?
+    BrowserModule,
+    FormsModule, // template driven form
+    ReactiveFormsModule, // model driven form
+    HttpClientModule,
+    RouterModule.forRoot([ // root component must have a router-outlet for childern
+      {path: '', component: HomeComponent},
       {path: 'home', component: HomeComponent},
-      {path: 'contacts', component: ContactPageComponent, // has children, so needs to have a router-outlet!
+      {
+        path: 'contacts', component: ContactPageComponent, // has children, so needs to have a router-outlet!
         children: [{
           path: ':id', component: ContactDetailComponent
         }]
       },
       {path: 'contactdetails/:id', component: ContactDetailComponent},
-      {path: '', component: HomeComponent},
     ])
   ],
-  exports: [],
-  providers: [{provide: LOCALE_ID, useValue: 'nl-NL'}],
-  bootstrap: [AppComponent]
+  exports: [], // welke onderdelen van deze module stel ik beschikbaar voor andere modules?
+  providers: [{provide: LOCALE_ID, useValue: 'nl-NL'}]
 })
 export class AppModule {
 }

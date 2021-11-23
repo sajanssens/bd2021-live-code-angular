@@ -3,7 +3,8 @@
 
 <button (click)="handleClick()">CLICK ME!</button>
 
-<p [hidden]="toggle==true">Hidden title</p>
+<p *ngIf="toggle==false">Hidden title</p>
+<p [style]="myStyle()">Title2</p>
 
 <ul>
   <li *ngFor="let car of cars" [class.expensive]="car.price > 15000">{{car.make}} {{car.type}} </li>
@@ -17,4 +18,5 @@
 
 <app-hello-world></app-hello-world>
 
-<pre>{{cars | json}}</pre>
+<pre>{{cars | json }}</pre>
+{{car.price | number }}

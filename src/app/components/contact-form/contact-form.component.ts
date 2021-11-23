@@ -13,7 +13,7 @@ function emailValidator(control: AbstractControl): ValidationErrors | null {
 }
 
 @Component({
-  selector: 'app-contact-form',
+  selector: 'app-contact-form', // de html-tag die je gebruikt om dit component ergens in een ander component te plaatsen
   templateUrl: './contact-form.component.html',
   styleUrls: ['./contact-form.component.css']
 })
