@@ -16,6 +16,8 @@ import {ContactListComponent} from './components/contact-list/contact-list.compo
 import {ContactPageComponent} from './pages/contact-page/contact-page.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ContactDetailComponent} from './components/contact-detail/contact-detail.component';
+import { UploadComponent } from './components/upload/upload.component';
+import { ImagesComponent } from './components/images/images.component';
 
 registerLocaleData(localeNL);
 
@@ -32,7 +34,9 @@ registerLocaleData(localeNL);
     HomeComponent,
     ContactListComponent,
     ContactPageComponent,
-    ContactDetailComponent
+    ContactDetailComponent,
+    UploadComponent,
+    ImagesComponent
   ],
   imports: [ // welke dingen uit andere modules wil ik in deze module gebruiken?
     BrowserModule,
@@ -42,6 +46,8 @@ registerLocaleData(localeNL);
     RouterModule.forRoot([ // root component must have a router-outlet for childern
       {path: '', component: HomeComponent},
       {path: 'home', component: HomeComponent},
+      {path: 'upload', component: UploadComponent},
+      {path: 'images', component: ImagesComponent},
       {
         path: 'contacts', component: ContactPageComponent, // has children, so needs to have a router-outlet!
         children: [{
@@ -52,7 +58,7 @@ registerLocaleData(localeNL);
     ])
   ],
   exports: [], // welke onderdelen van deze module stel ik beschikbaar voor andere modules?
-  providers: [{provide: LOCALE_ID, useValue: 'nl-NL'}]
+  providers: [{provide: LOCALE_ID, useValue: 'en-US'}]
 })
 export class AppModule {
 }

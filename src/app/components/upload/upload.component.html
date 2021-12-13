@@ -1,0 +1,13 @@
+<form [formGroup]="uploadForm" (ngSubmit)="upload()">
+
+  <div class="preview" *ngIf="imgFile">
+    <img [src]="imgFile" style="width:200px">
+  </div>
+
+  <div class="form-group">
+    <input type="file" class="form-control" id="file" formControlName="file" (change)="onImageChange($event)">
+  </div>
+
+  <button class="btn btn-success" type="submit">Upload</button>
+
+</form>
