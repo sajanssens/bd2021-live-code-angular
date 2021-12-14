@@ -1,13 +1,23 @@
+<div class="col-md-12">Select an image</div>
+
 <form [formGroup]="uploadForm" (ngSubmit)="upload()">
-
-  <div class="preview" *ngIf="imgFile">
-    <img [src]="imgFile" style="width:200px">
+  <div class="d-flex">
+    <div class="p-1 flex-grow-1">
+      <input type="file" class="form-control" id="file" formControlName="file" (change)="onImageChange($event)">
+    </div>
+    <div class="p-1 d-flex ms-auto align-content-center flex-wrap">
+      <button class="btn btn-success" type="submit">Upload</button>
+    </div>
   </div>
 
-  <div class="form-group">
-    <input type="file" class="form-control" id="file" formControlName="file" (change)="onImageChange($event)">
+  <div class="d-flex">
+    <div class="p-1 flex-grow-1">
+      <div class="preview" *ngIf="base64Data">
+        <img [src]="base64Data" style="width:300px">
+      </div>
+      <div *ngIf="message">
+        <p>{{message}}</p>
+      </div>
+    </div>
   </div>
-
-  <button class="btn btn-success" type="submit">Upload</button>
-
 </form>

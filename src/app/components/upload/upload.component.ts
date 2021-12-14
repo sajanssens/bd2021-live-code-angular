@@ -12,12 +12,14 @@ export class UploadComponent {
 
   uri = serverUrl + '/images';
 
-  imgFile: string;
+  base64Data: string;
 
   uploadForm = new FormGroup({
     file: new FormControl('', [Validators.required]),
     data: new FormControl('', [Validators.required])
   });
+
+  message: string = '';
 
   constructor(private httpClient: HttpClient) {
   }
@@ -35,7 +37,7 @@ export class UploadComponent {
       reader.readAsDataURL(file);
 
       reader.onload = () => {
-        this.imgFile = reader.result as string;
+        this.base64Data = reader.result as string;
         this.uploadForm.patchValue({
           data: reader.result
         });
@@ -47,7 +49,11 @@ export class UploadComponent {
     // console.log(this.uploadForm.value);
     this.httpClient.post(this.uri, this.uploadForm.value)
       .subscribe(
-        data => console.log(data),
+        data => {
+          this.uploadForm.reset();
+          this.base64Data = null;
+          this.message = 'Upload complete';
+        },
         error => console.log(error)
       );
   }
