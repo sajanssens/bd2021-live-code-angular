@@ -33,28 +33,10 @@
       <div class="p-1">
         <label>Languages</label>
         <div class="row" formArrayName="languages">
-          <div class="col-auto">
-            <div class="form-check" formGroupName="0">
-              <input class="form-check-input" type="checkbox" id="java" formControlName="sel">
-              <label class="form-check-label" for="java">Java</label>
-            </div>
-          </div>
-          <div class="col-auto">
-            <div class="form-check" formGroupName="1">
-              <input class="form-check-input" type="checkbox" id="kotlin" formControlName="sel">
-              <label class="form-check-label" for="kotlin">Kotlin</label>
-            </div>
-          </div>
-          <div class="col-auto">
-            <div class="form-check" formGroupName="2">
-              <input class="form-check-input" type="checkbox" id="typescript" formControlName="sel">
-              <label class="form-check-label" for="typescript">Typescript</label>
-            </div>
-          </div>
-          <div class="col-auto">
-            <div class="form-check" formGroupName="3">
-              <input class="form-check-input" type="checkbox" id="php" formControlName="sel">
-              <label class="form-check-label" for="php">PHP</label>
+          <div *ngFor="let l of languages; let i = index" class="col-auto">
+            <div class="form-check" formGroupName="{{i}}">
+              <input class="form-check-input" type="checkbox" id="{{l.id + l.name}}" formControlName="{{l.name}}">
+              <label class="form-check-label" for="{{l.id + l.name}}">{{l.name}}</label>
             </div>
           </div>
         </div>
