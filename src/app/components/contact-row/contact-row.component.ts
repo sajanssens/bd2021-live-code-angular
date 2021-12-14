@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Contact} from '../contact-form/contact';
+import {Contact} from '../../domain/contact';
 
 @Component({
   selector: '[app-contact-row]',

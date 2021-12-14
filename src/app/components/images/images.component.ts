@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {serverUrl} from '../../../environments/environment';
-import {Image} from './image';
+import {Image} from '../../domain/image';
 
 @Component({
   selector: 'app-images',

@@ -27,9 +27,7 @@
       <div class="p-1">
         <label for="gender">Gender</label>
         <select formControlName="gender" name="gender" id="gender" class="form-select">
-          <option>Male</option>
-          <option>Female</option>
-          <option>Unknown</option>
+          <option *ngFor="let g of genders" [ngValue]="g">{{g.name}}</option>
         </select>
       </div>
       <div class="p-1">

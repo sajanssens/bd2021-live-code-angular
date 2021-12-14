@@ -1,16 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ContactService} from '../../services/contact.service';
-import {Contact} from './contact';
-
-function emailValidator(control: AbstractControl): ValidationErrors | null {
-  if (!control.value) {
-    return null;
-  }
-
-  const regex = /^.+@.+\.[a-zA-Z]+$/;
-  return regex.test(control.value) ? null : {email: {valid: false}};
-}
+import {Contact} from '../../domain/contact';
+import {Gender} from '../../domain/gender';
+import {emailValidator} from '../../util/util';
 
 @Component({
   selector: 'app-contact-form', // de html-tag die je gebruikt om dit component ergens in een ander component te plaatsen
@@ -18,13 +11,20 @@ function emailValidator(control: AbstractControl): ValidationErrors | null {
   styleUrls: ['./contact-form.component.css']
 })
 export class ContactFormComponent implements OnInit {
-
   @Input() contact: Contact;
+
+  // tslint:disable-next-line:variable-name
+  private _genders: Gender[] = [{id: 1, name: 'Male'}, {id: 2, name: 'Female'}];
 
   contactForm: FormGroup;
   plusMinus = 'plus';
 
   constructor(private contactService: ContactService, private fb: FormBuilder) {
+  }
+
+  get genders(): Gender[] {
+    console.log(this._genders);
+    return this._genders;
   }
 
   ngOnInit(): void {
