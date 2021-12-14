@@ -1,7 +1,7 @@
 <div class="col-md-12" (click)="toggleForm()">Add new contact <i class="far fa-{{plusMinus}}-square"></i></div>
 
 <ng-container *ngIf="plusMinus==='minus'">
-  <form (ngSubmit)="addContactModelDriven()" [formGroup]="contactForm">
+  <form (ngSubmit)="submit()" [formGroup]="contactForm">
     <div class="d-flex">
       <div class="p-1">
         <input type="text" formControlName="firstName" name="firstName" id="inputFirstNameR" class="form-control"
@@ -34,9 +34,9 @@
         <label>Languages</label>
         <div class="row" formArrayName="languages">
           <div *ngFor="let l of languages; let i = index" class="col-auto">
-            <div class="form-check" formGroupName="{{i}}">
-              <input class="form-check-input" type="checkbox" id="{{l.id + l.name}}" formControlName="{{l.name}}">
-              <label class="form-check-label" for="{{l.id + l.name}}">{{l.name}}</label>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="{{i}}" [formControlName]="i">
+              <label class="form-check-label" for="{{i}}">{{l.name}}</label>
             </div>
           </div>
         </div>

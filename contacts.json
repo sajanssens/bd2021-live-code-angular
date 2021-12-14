@@ -1,52 +1,10 @@
 {
   "contacts": [
     {
+      "id": 1,
       "firstName": "Bram",
       "surname": "Janssens",
-      "email": "s.a.janssens@gmail.com",
-      "gender": {
-        "id": 1,
-        "name": "Male"
-      },
-      "languages": [
-        {
-          "sel": true
-        },
-        {
-          "sel": null
-        },
-        {
-          "sel": null
-        },
-        {
-          "sel": null
-        }
-      ],
-      "id": 1
-    },
-    {
-      "firstName": "Bram",
-      "surname": "Janssens",
-      "email": "s.a.janssens@gmail.com",
-      "gender": {
-        "id": 1,
-        "name": "Male"
-      },
-      "languages": [
-        {
-          "Java": false
-        },
-        {
-          "Kotlin": true
-        },
-        {
-          "Typescript": true
-        },
-        {
-          "PHP": false
-        }
-      ],
-      "id": 2
+      "email": "s.a.janssens@gmail.com"
     }
   ],
   "users": [
