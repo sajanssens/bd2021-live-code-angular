@@ -10,11 +10,13 @@ export class IntroComponent implements OnInit {
   // fields
   title;
   toggle = false;
-  input = 'input text here...';
+  eenBeetjeTekst123 = 'input text here...';
   cars;
-  car = {make: 'Skoda', type: 'Fabia', price: 21000.4353456};
 
-  // methods
+  car = {make: 'Skoda', type: 'Fabia', price: 21000.4353456};
+  min = 0;
+  max = 10;
+
   ngOnInit(): void {
     this.title = 'bd2021-live-code-angular';
     this.cars = [
@@ -33,4 +35,7 @@ export class IntroComponent implements OnInit {
     return this.toggle ? 'color:red' : 'color:green';
   }
 
+  handleEenBeetjeTekst(): void {
+    console.log(this.min + this.max);
+  }
 }

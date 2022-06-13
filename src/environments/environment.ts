@@ -8,8 +8,8 @@ export const environment = {
 
 };
 
-// export const serverUrl = 'http://localhost:9080/rest/api';
-export const serverUrl = 'http://localhost:3000'; // json-server
+export const serverUrl = 'http://localhost:9090/rest/api';
+// export const serverUrl = 'http://localhost:3000'; // json-server
 
 
 /*

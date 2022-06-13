@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {LOCALE_ID, NgModule} from '@angular/core';
+import {NgModule} from '@angular/core';
 import localeNL from '@angular/common/locales/nl';
 import {registerLocaleData} from '@angular/common';
 
@@ -16,14 +16,33 @@ import {ContactListComponent} from './components/contact-list/contact-list.compo
 import {ContactPageComponent} from './pages/contact-page/contact-page.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ContactDetailComponent} from './components/contact-detail/contact-detail.component';
-import { UploadComponent } from './components/upload/upload.component';
-import { ImagesComponent } from './components/images/images.component';
+import {UploadComponent} from './components/upload/upload.component';
+import {ImagesComponent} from './components/images/images.component';
 
 registerLocaleData(localeNL);
 
-
 @NgModule({ // decorator = annotatie
-  bootstrap: [AppComponent], // wat is mijn root component?
+  imports: [ // welke dingen uit andere modules wil ik in deze module gebruiken?
+    BrowserModule,
+    FormsModule, // template driven form
+    ReactiveFormsModule, // model driven form
+    HttpClientModule,
+    RouterModule.forRoot([ // root component must have a router-outlet for childern
+      {path: '', component: HomeComponent},
+      {path: 'intro', component: IntroComponent},
+      {path: 'home', component: HomeComponent},
+      {path: 'upload', component: UploadComponent},
+      {path: 'images', component: ImagesComponent},
+      {
+        path: 'contacts', component: ContactPageComponent, // has children, so needs to have a router-outlet!
+        children: [{
+          path: ':id', component: ContactDetailComponent
+        }]
+      },
+      {path: 'contactdetails/:id', component: ContactDetailComponent},
+    ])
+  ],
+  exports: [], // welke onderdelen van deze module stel ik beschikbaar voor andere modules?
   declarations: [ // welke componenten zitten er in deze module en kunnen gebruikt gaan worden?
     AppComponent,
     HelloWorldComponent,
@@ -38,27 +57,8 @@ registerLocaleData(localeNL);
     UploadComponent,
     ImagesComponent
   ],
-  imports: [ // welke dingen uit andere modules wil ik in deze module gebruiken?
-    BrowserModule,
-    FormsModule, // template driven form
-    ReactiveFormsModule, // model driven form
-    HttpClientModule,
-    RouterModule.forRoot([ // root component must have a router-outlet for childern
-      {path: '', component: HomeComponent},
-      {path: 'home', component: HomeComponent},
-      {path: 'upload', component: UploadComponent},
-      {path: 'images', component: ImagesComponent},
-      {
-        path: 'contacts', component: ContactPageComponent, // has children, so needs to have a router-outlet!
-        children: [{
-          path: ':id', component: ContactDetailComponent
-        }]
-      },
-      {path: 'contactdetails/:id', component: ContactDetailComponent},
-    ])
-  ],
-  exports: [], // welke onderdelen van deze module stel ik beschikbaar voor andere modules?
-  providers: [{provide: LOCALE_ID, useValue: 'en-US'}]
+  providers: [],
+  bootstrap: [AppComponent] // wat is mijn root component?
 })
 export class AppModule {
 }

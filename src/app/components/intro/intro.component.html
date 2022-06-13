@@ -12,9 +12,13 @@
 
 <div *ngIf="toggle">Hi there!</div>
 
-<input type="text" [(ngModel)]="input">
+<!--<form>-->
+min: <input type="text" [(ngModel)]="min">
+max: <input type="text" [(ngModel)]="max">
+<button (click)="handleEenBeetjeTekst()">Voer filter uit</button>
+<!--</form>-->
 
-<p> {{input}}</p>
+<p> {{eenBeetjeTekst123}}</p>
 
 <app-hello-world></app-hello-world>
 
