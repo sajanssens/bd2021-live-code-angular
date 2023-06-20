@@ -18,6 +18,10 @@ export class ContactService {
   // tslint:disable-next-line:variable-name
   private _contactsDataUpdated$ = new Subject<Contact[]>(); // is een observable
 
+  get contactsDataUpdated$(): Subject<Contact[]> {
+    return this._contactsDataUpdated$;
+  }
+
   getAll(): void {
     this.http.get<Contact[]>(this.uri) // get contacts from server
       .subscribe(                      // when the results arrive (some time in the future):
@@ -40,9 +44,6 @@ export class ContactService {
       .subscribe(contacts => this._contactsDataUpdated$.next(contacts));
   }
 
-  get contactsDataUpdated$(): Subject<Contact[]> {
-    return this._contactsDataUpdated$;
-  }
 
   get(id: number): Observable<Contact> {
     return this.http.get<Contact>(`${this.uri}/${id}`);

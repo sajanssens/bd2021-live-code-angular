@@ -21,7 +21,7 @@ export class ContactDetailComponent implements OnInit {
   ngOnInit(): void {
     // static:
     // one-off (snapshot) during life time of this component:
-    // const id = +this.route.snapshot.paramMap.get('id');
+    // const id = +this.route.snapshot.paramMap.get('contactId');
     // this.getContact(id);
 
     // or reactive:

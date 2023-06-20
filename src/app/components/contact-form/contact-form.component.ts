@@ -25,23 +25,28 @@ export class ContactFormComponent implements OnInit {
     {id: 1, name: 'Java'},
     {id: 2, name: 'Kotlin'},
     {id: 3, name: 'Typescript'},
-    {id: 4, name: 'PHP'}
+    {id: 4, name: 'PHP'},
+    {id: 5, name: 'JS'},
+    {id: 6, name: 'COBOL!!'}
   ];
 
   contactForm: FormGroup;
   plusMinus = 'plus';
 
-  constructor(private contactService: ContactService, private fb: FormBuilder) {}
+  constructor(private contactService: ContactService, private fb: FormBuilder) {
+  }
 
   get languagesFormArray(): FormArray {
     return this.contactForm.controls.languages as FormArray;
   }
 
-  get genders(): Gender[] { return this._genders; }
+  get genders(): Gender[] {
+    return this._genders;
+  }
 
   ngOnInit(): void {
     const fb = this.fb;
-    this.contactForm = new FormGroup({
+    this.contactForm = fb.group({
       firstName: fb.control(''),
       surname: fb.control(''),
       email: fb.control('', [Validators.required, emailValidator]),
@@ -52,7 +57,7 @@ export class ContactFormComponent implements OnInit {
   }
 
   private addLanguages(): void {
-    this.languages.forEach(() => this.languagesFormArray.push(new FormControl(false)));
+    this.languages.forEach(() => this.languagesFormArray.push(new FormControl()));
   }
 
   submit(): void {

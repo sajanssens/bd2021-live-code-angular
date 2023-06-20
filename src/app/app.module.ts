@@ -36,10 +36,10 @@ registerLocaleData(localeNL);
       {
         path: 'contacts', component: ContactPageComponent, // has children, so needs to have a router-outlet!
         children: [{
-          path: ':id', component: ContactDetailComponent
+          path: ':contactId', component: ContactDetailComponent
         }]
       },
-      {path: 'contactdetails/:id', component: ContactDetailComponent},
+      {path: 'contactdetails/:contactId', component: ContactDetailComponent},
     ])
   ],
   exports: [], // welke onderdelen van deze module stel ik beschikbaar voor andere modules?
